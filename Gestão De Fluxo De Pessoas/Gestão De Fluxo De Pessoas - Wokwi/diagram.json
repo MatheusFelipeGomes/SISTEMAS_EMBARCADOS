@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "author": "Matheus Gomes",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-pi-pico-w", "id": "pico", "top": 121.55, "left": -6.05, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": 169.6,
+      "left": 120.8,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 249.2,
+      "left": -290.8,
+      "rotate": 270,
+      "attrs": { "color": "blue" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn2",
+      "top": 249.2,
+      "left": -156.4,
+      "rotate": 270,
+      "attrs": { "color": "green" }
+    },
+    { "type": "wokwi-hc-sr04", "id": "ultrasonic1", "top": -65.7, "left": -330.5, "attrs": {} },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic2",
+      "top": -65.7,
+      "left": -148.1,
+      "attrs": { "distance": "400" }
+    }
+  ],
+  "connections": [
+    [ "pico:GP0", "$serialMonitor:RX", "", [] ],
+    [ "pico:GP1", "$serialMonitor:TX", "", [] ],
+    [ "lcd1:VCC", "pico:VBUS", "red", [ "h-38.4", "v-67.1" ] ],
+    [ "lcd1:GND", "pico:GND.8", "black", [ "h-28.8", "v-48" ] ],
+    [ "btn2:2.r", "pico:GP7", "gold", [ "v0" ] ],
+    [ "btn1:1.r", "pico:GP6", "gold", [ "v0" ] ],
+    [ "btn1:2.r", "btn2:1.r", "black", [ "v0" ] ],
+    [ "btn2:1.r", "pico:GND.2", "black", [ "v0" ] ],
+    [ "ultrasonic1:TRIG", "pico:GP2", "green", [ "v0" ] ],
+    [ "ultrasonic1:ECHO", "pico:GP3", "green", [ "v0" ] ],
+    [ "ultrasonic2:TRIG", "pico:GP4", "green", [ "v0" ] ],
+    [ "ultrasonic2:ECHO", "pico:GP5", "green", [ "v0" ] ],
+    [ "lcd1:SDA", "pico:GP16", "green", [ "h-38.4", "v86.6" ] ],
+    [ "lcd1:SCL", "pico:GP17", "green", [ "h-28.8", "v77.1" ] ]
+  ],
+  "dependencies": {}
+}
